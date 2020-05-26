@@ -18,6 +18,7 @@
 
 [colors]
 background = ${xrdb:color0:#222}
+background-bar = #ff282828
 ;background = #222
 background-alt = #444
 foreground = ${xrdb:color7:#222}
@@ -28,16 +29,16 @@ secondary = #e60053
 alert = #bd2c40
 
 [bar/default]
-;monitor = ${env:MONITOR:HDMI-1}
+;monitor = ${env:MONITOR:HDMI1}
 width = 100%
 height = 70
 dpi = ${xrdb:Xft.dpi}
-;offset-x = 1%
-;offset-y = 1%
+offset-x = 0
+offset-y = 0
 radius = 0
 fixed-center = false
 
-background = ${colors.background}
+background = ${colors.background-bar}
 foreground = ${colors.foreground}
 
 line-size = 3
@@ -55,7 +56,9 @@ module-margin-right = 2
 font-0 = fixed:pixelsize=11;1
 font-1 = FontAwesome5Free:style=Solid:pixelsize=13:antialias=false;3
 font-2 = FontAwesome5Brands:style=Solid:pixelsize=13:antialias=false;3
-font-3 = Arimo Nerd Font:style=Regular:pixelsize=13:antialias=false;3
+font-3 = FontAwesome5Free:style=Solid:pixelsize=11:antialias=false;3
+font-4 = FontAwesome5Free:style=Solid:pixelsize=9:antialias=false;3
+font-5 = Arimo Nerd Font:style=Regular:pixelsize=13:antialias=false;3
 
 modules-left = i3
 modules-center = xwindow
@@ -81,12 +84,12 @@ cursor-scroll = ns-resize
 
 [bar/right]
 inherit = bar/default
-monitor = HDMI-2
+monitor = HDMI2
 modules-right =
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:30:...%
+label = "     %title:0:30:...%"
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -179,7 +182,11 @@ ws-icon-0 = 1;
 ws-icon-1 = 2;
 ws-icon-2 = 3;
 ws-icon-3 = 4;
-ws-icon-4 = 5;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-default = 
 
 
 [module/mpd]
@@ -294,7 +301,7 @@ format-volume =    <bar-volume> <label-volume>
 label-volume = %percentage%%
 label-volume-foreground = ${root.foreground}
 
-label-muted = ﱝ
+label-muted = 
 label-muted-foreground = ${colors.foreground}
 
 bar-volume-width = 8
@@ -309,9 +316,9 @@ bar-volume-gradient = false
 bar-volume-indicator = |
 bar-volume-indicator-font = 2
 bar-volume-fill = ─
-bar-volume-fill-font = 2
+bar-volume-fill-font = 1
 bar-volume-empty = ─
-bar-volume-empty-font = 2
+bar-volume-empty-font = 1
 bar-volume-empty-foreground = ${colors.foreground}
 
 [module/battery]
@@ -320,31 +327,37 @@ battery = BAT0
 adapter = AC0
 full-at = 98
 
-format-charging = <ramp-capacity> <label-charging> 
+format-charging = %{T6}<ramp-capacity> %{T-} <label-charging>
 format-charging-underline = #ffb52a
 
-format-discharging = <ramp-capacity> <label-discharging>
+format-discharging = %{T6}<ramp-capacity>%{T-} <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
 
-format-full-prefix = %{T4} %{T-}
+format-full-prefix = %{T6} %{T-}
 format-full-prefix-foreground = ${colors.foreground}
 format-full-underline = ${self.format-charging-underline}
 
-ramp-capacity-0 = %{T4} %{T-}
-ramp-capacity-1 = %{T4} %{T-}
-ramp-capacity-2 = %{T4} %{T-}
+ramp-capacity-0 =  
+ramp-capacity-1 =  
+ramp-capacity-2 =  
+ramp-capacity-3 =  
 ramp-capacity-foreground = ${colors.foreground}
+
 
 animation-charging-0 = 
 animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-foreground = ${colors.foreground}
 animation-charging-framerate = 750
 
 animation-discharging-0 = 
 animation-discharging-1 = 
-animation-discharging-2 = 
-animation-discharging-foreground = ${colors.foreground-alt}
+animation-discharging-2 = 
+animation-discharging-3 = 
+animation-discharging-4 = 
+animation-discharging-foreground = ${colors.foreground}
 animation-discharging-framerate = 750
 
 [module/temperature]
